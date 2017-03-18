@@ -20,7 +20,7 @@ layout: home
 
 {% if posts.categories.blog.length != 0 %}
   <div class="wrapper">
-    <h1>Blog posts</h2>
+    <h1>Blog posts</h1>
     <ul class="post-list">
       {% for post in site.categories.blog %}
         <li>
@@ -29,9 +29,7 @@ layout: home
           <h2>
             <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
           </h2>
-          <p>
-            {{ post.excerpt }}
-          </p>
+          {{ post.excerpt }}
         </li>
       {% endfor %}
     </ul>
