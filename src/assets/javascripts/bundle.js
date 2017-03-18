@@ -75,34 +75,39 @@
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var imgs = document.images,
-    len = imgs.length,
-    counter = 0;
+var equaliseImages = function equaliseImages() {
+  var imgs = document.images,
+      len = imgs.length,
+      counter = 0;
 
-[].forEach.call(imgs, function (img) {
-  img.addEventListener('load', incrementCounter, false);
-});
+  [].forEach.call(imgs, function (img) {
+    img.addEventListener('load', incrementCounter, false);
+  });
 
-var getAspectRatio = function getAspectRatio(node) {
-  var _node$children = _slicedToArray(node.children, 1),
-      _node$children$ = _node$children[0],
-      width = _node$children$.width,
-      height = _node$children$.height;
+  var getAspectRatio = function getAspectRatio(node) {
+    var _node$children = _slicedToArray(node.children, 1),
+        _node$children$ = _node$children[0],
+        width = _node$children$.width,
+        height = _node$children$.height;
 
-  return width / height;
+    return width / height;
+  };
+
+  function incrementCounter() {
+    counter++;
+    if (counter === len) {
+      var domImgs = document.getElementsByClassName('img_wrap');
+      var _imgs = [].slice.call(domImgs);
+      _imgs.forEach(function (n) {
+        n.style.flex = getAspectRatio(n);
+      });
+    }
+  }
 };
 
-function incrementCounter() {
-  counter++;
-  if (counter === len) {
-    var domImgs = document.getElementsByClassName('img_wrap');
-    var _imgs = [].slice.call(domImgs);
-    console.log(_imgs.map(getAspectRatio));
-    _imgs.forEach(function (n) {
-      n.style.flex = getAspectRatio(n);
-    });
-  }
-}
+equaliseImages();
+
+document.addEventListener("DOMContentLoaded", equaliseImages());
 
 /***/ })
 /******/ ]);

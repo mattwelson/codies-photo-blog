@@ -1,0 +1,39 @@
+---
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: home
+---
+
+{% for post in site.categories.photos limit: 1 %}
+  {% include photo.html post=post featured=true %}
+{% endfor %}
+
+<div class="wrapper">
+  <h2>Other trips</h2>
+  <div class="otherwrap">
+    {% for post in site.categories.photos offset: 1 %}
+      {% include photo.html post=post featured=false %}
+    {% endfor %}
+  </div>
+</div>
+
+<hr />
+
+{% if posts.categories.blog.length != 0 %}
+  <div class="wrapper">
+    <h1>Blog posts</h2>
+    <ul class="post-list">
+      {% for post in site.categories.blog %}
+        <li>
+          <span class="post-meta">{{ post.date | date: "%-d %b %Y" }}</span>
+
+          <h2>
+            <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          </h2>
+          <p>
+            {{ post.excerpt }}
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

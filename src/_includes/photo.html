@@ -1,0 +1,24 @@
+{% assign post = include.post %}
+{% assign featured = include.featured %}
+
+<a href="{{ post.url | relative_url }}" class="{% if featured %}featured{% else %}other{% endif %}">
+  <span class="{% if featured %}featured{% else %}other{% endif %}-bg_wrap">
+    <img src="{{ post.headerphoto }}" class="{% if featured %}featured{% else %}other{% endif %}-bg">
+  </span>
+  <span class="featured_text">
+    {% if featured %}<span class="h1">{{ post.title }}</span>{% endif %}
+    <h2>
+      {% if featured %}
+        {% for m in post.meta %}
+        <span>{{ m.count }} {{ m.text}}</span>
+        {% unless forloop.last %}
+          <span> - </span>
+        {% endunless %}
+      {% endfor %}{% endif %}
+    </h2>
+  </span>
+  {% unless featured %}
+    <span class="h2">{{ post.title }}</span>
+    <img class="other_marker" src="/assets/icons/100/Marker.png" role="presentation" />
+  {% endunless %}
+</a>
