@@ -25,5 +25,9 @@
     "react-addons-update": "^15.4.2",
     "react-dom": "^15.4.2",
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "zepto": "^1.2.0",
+    "zepto-webpack": "^1.2.1"
   }
 }

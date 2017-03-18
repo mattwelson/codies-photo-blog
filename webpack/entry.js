@@ -1,31 +1,13 @@
-const equaliseImages = () => {
-  var imgs = document.images,
-      len = imgs.length,
-      counter = 0;
+import $ from 'zepto-webpack'
 
-  [].forEach.call( imgs, function( img ) {
-      img.addEventListener( 'load', incrementCounter, false );
-  } );
-
-  const getAspectRatio = node => {
-    const [ { width, height } ] = node.children
-    return width / height
-  }
-
-  function incrementCounter() {
-      counter++;
-      if ( counter === len ) {
-        const domImgs = document.getElementsByClassName('img_wrap')
-        const imgs = [].slice.call(domImgs);
-        imgs.forEach(n => {
-          n.style.flex = getAspectRatio(n)
-        })
-      }
-  }
+const getAspectRatio = node => {
+  const [ { width, height } ] = node.children
+  return width / height
 }
 
-equaliseImages()
-
-document.addEventListener("DOMContentLoaded",
-  equaliseImages()
-)
+$(() => {
+  $('.img_wrap img').on('load', e => {
+    const wrap = e.path[1]
+    wrap.style.flex = getAspectRatio(wrap)
+  })
+})

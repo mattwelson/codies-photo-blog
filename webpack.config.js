@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   // webpack folder's entry js - excluded from jekll's build process.
   entry: "./webpack/entry.js",
@@ -11,11 +13,16 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader', 
+        loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015']
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+        $: 'zepto-webpack'
+    })
+  ]
 };

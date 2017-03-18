@@ -2449,3 +2449,11 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+zepto-webpack@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/zepto-webpack/-/zepto-webpack-1.2.1.tgz#0726107748a90c96349f3076c015a06cc6222d5f"
+
+zepto@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/zepto/-/zepto-1.2.0.tgz#e127bd9e66fd846be5eab48c1394882f7c0e4f98"
