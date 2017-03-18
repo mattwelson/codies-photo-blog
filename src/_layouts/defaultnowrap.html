@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <main class="page-content" aria-label="Content">
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <script type="text/javascript" src="/assets/javascripts/bundle.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+      WebFont.load({
+        google: {
+          families: ['Raleway:500,500i,600,700,800']
+        }
+      });
+    </script>
+
+  </body>
+
+</html>

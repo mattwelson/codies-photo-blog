@@ -1,0 +1,43 @@
+---
+layout: defaultnowrap
+---
+
+<div class="bg_wrap"><img src="{{ page.headerphoto }}" role="presentation" class="bg"></div>
+
+<article class="photopost" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="photopost-header">
+    <div class="location">
+      <img src="/assets/icons/100/Marker.png" role="presentation" class="marker">
+      <h2>{{ page.location }}</h2>
+    </div>
+    <h1 class="photopost-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <!--
+    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+      {{ page.date | date: "%b %-d, %Y" }}
+    </time>
+      {% if page.author %}
+       • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ page.author }}</span>
+      </span>
+      {% endif %}
+    -->
+    <div class="meta_list">
+      {% for meta in page.meta %}
+      <div class="meta">
+        <span>{{ meta.count }}</span>
+        <img src="/assets/icons/100/{{ meta.icon }}.png" alt="{{ meta.text }}">
+      </div>
+      {% endfor %}
+    </div>
+
+  </header>
+
+  <div class="photopost-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {% if site.disqus.shortname %}
+    {% include disqus_comments.html %}
+  {% endif %}
+</article>

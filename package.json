@@ -1,0 +1,29 @@
+{
+  "name": "photo-blog",
+  "version": "0.1.0",
+  "description": "Codie's travels",
+  "main": "index.js",
+  "authors": [
+    {
+      "name": "Matt Welson"
+    },
+    {
+      "name": "Codie Westphall"
+    }
+  ],
+  "license": "MIT",
+  "scripts": {
+    "start": "jekyll s -w --incremental & webpack -w",
+    "rebuild": "jekyll clean && webpack && jekyll b"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "react": "^15.4.2",
+    "react-addons-update": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "webpack": "^2.2.1"
+  }
+}
